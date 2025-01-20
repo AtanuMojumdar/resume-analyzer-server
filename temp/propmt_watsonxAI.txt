@@ -1,0 +1,62 @@
+Important!: Return only a Json(structured) response which match the provided schema for JSON do not add any other field
+Convert the following extracted resume content into a structured JSON format(provided):
+
+Atanu Mojumdar
+Location: Bangalore, India
+Email: your.email@example.com
+Phone: +91-9876543210
+LinkedIn: linkedin.com/in/atanu
+GitHub: github.com/atanu
+
+Career Objective
+MERN Stack Developer with expertise in AI-powered applications, cloud solutions, and data
+analytics. Seeking opportunities to create impactful tech solutions using AI, NLP, and full-stack       
+technologies.
+
+Technical Skills
+Frontend: React.js, Redux, Tailwind CSS
+Backend: Node.js, Express.js, REST APIs
+Database: MongoDB, PostgreSQL
+AI/ML: IBM Watson AI, TensorFlow
+Cloud: IBM Cloud, AWS
+Other: Git, Docker, CI/CD
+
+Work Experience
+MERN Stack Developer | IBM AI Hackathon Project
+Jan 2024 - Present
+Developed AI-Powered Resume Analyzer & Job Matcher using IBM Watson AI and RapidAPI
+to fetch live job listings.
+Extracted skills and experience from resumes and matched them with relevant job
+opportunities.
+Software Developer Intern | XYZ Tech Solutions
+June 2023 - Dec 2023
+Created a job portal with AI-based recommendations using MERN stack & Watson AI.
+
+Projects
+AI-Powered Resume Analyzer & Job Matcher
+Tech: MERN, IBM Watson AI
+
+Description: Analyzed resumes, extracted key skills and experience, and matched them with
+real-time job listings.
+
+Education
+B.Tech in Computer Science & Engineering (2020 - 2024)
+Indian Institute of Technology, Delhi
+
+Certifications
+IBM AI & Cloud Developer Certification
+AWS Certified Cloud Practitioner
+
+Languages
+English, Hindi
+
+Format it into the following JSON structure(example):
+
+{
+"name": "John Doe",
+"jobTitles": ["Software Engineer", "Senior Developer"],
+"companies": ["Google"],
+"location": "San Francisco, California",
+"experience": "2019 to 2023",
+"skills": ["JavaScript", "React", "Node.js"]
+}
