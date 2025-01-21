@@ -139,6 +139,10 @@ dist
 .webpack/
 
 # Optional stylelint cache
+.wav
+*.wav
+.pdf
+*.pdf
 
 # SvelteKit build / generate output
 .svelte-kit

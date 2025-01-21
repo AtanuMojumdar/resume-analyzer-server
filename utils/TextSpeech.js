@@ -4,9 +4,9 @@ const { IamAuthenticator } = require('ibm-watson/auth');
 
 const textToSpeech = new TextToSpeechV1({
     authenticator: new IamAuthenticator({
-        apikey: 'pUz0utSqxM8JTw4LyLpSfW1WCtliqn4-YzRjvYWHVsYF',
+        apikey: process.env.TEXT_SPEECH_IBM_APIKEY,
     }),
-    serviceUrl: 'https://api.au-syd.text-to-speech.watson.cloud.ibm.com/instances/8df7274a-d468-40b9-9981-39d78faee341',
+    serviceUrl: process.env.TEXT_SPEECH_SERVICE_URL,
 });
 
 async function textSpeech(text,path) {

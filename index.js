@@ -1,7 +1,7 @@
 // all imports
 const express = require("express")
 const { config } = require('dotenv');
-config({ path: './project.env' });
+config({ path: './.env' });
 const path = require("path")
 const upload = require("./utils/multer.js")
 const readPDF = require("./utils/test-extract.js")

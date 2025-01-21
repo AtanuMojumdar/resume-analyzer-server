@@ -6,7 +6,7 @@ const watsonxAIService = WatsonXAI.newInstance({
     serviceUrl: "https://au-syd.ml.cloud.ibm.com/",
 });
 
-const projectID = "1330f850-a50a-42bf-b488-7e91d34c754a";
+const projectID = process.env.PROJECTID;
 
 async function init(prompt){
     const textGenRequestParametersModel = {
