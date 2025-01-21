@@ -10,7 +10,8 @@ const prompt = {
         "country": "extract country name from resume like India",
         "city": "extract city name from resume like Mumbai",
         "experience": "calculate and provide value in Integer data type like 3, 1. Do not provide something like 3+ years instead provide 3 and if experience is less than one year or if no experience put 0 value and if it is something like 3.2 or 3.5 round it off to 3 or 4. (Only Integer Data Type Value!)",
-        "skills": ["JavaScript", "React", "Node.js"]
+        "skills": ["JavaScript", "React", "Node.js"],
+        "fresher": "true or false (analyze and infer if the applicant is a fresher or experienced)"
     }
 
 }

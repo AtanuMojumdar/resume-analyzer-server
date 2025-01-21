@@ -61,7 +61,8 @@ app.post("/resume", upload.single('resume'), async (req, res) => { //resume uplo
         const jobs = await getJobListings({
             city: extractedJson.city,
             country: extractedJson.country,
-            jobTitle: extractedJson.job
+            jobTitle: extractedJson.job,
+            fresher: extractedJson.fresher,
         })
         if (!jobs) {
             return res.status(400).json({
