@@ -3,8 +3,10 @@ const extract = require('extract-json-from-string');
 
 const watsonxAIService = WatsonXAI.newInstance({
     version: '2023-05-29',
-    serviceUrl: "https://us-south.ml.cloud.ibm.com/",
+    serviceUrl: "https://au-syd.ml.cloud.ibm.com/",
 });
+
+const projectID = "1330f850-a50a-42bf-b488-7e91d34c754a";
 
 async function init(prompt){
     const textGenRequestParametersModel = {
@@ -13,7 +15,7 @@ async function init(prompt){
     const genParams = {
         input: prompt,
         modelId: 'ibm/granite-3-8b-instruct',
-        projectId: "5dcfc15a-c8b6-46ad-b359-219981131560",
+        projectId: projectID,
         parameters: textGenRequestParametersModel,
     };
 
@@ -27,8 +29,8 @@ async function init(prompt){
 
 async function askWinstonToDo(genParams) {
     const textGenerationResult = await watsonxAIService.generateText(genParams);
-    console.log('\n\n***** TEXT INPUT INTO MODEL *****');
-    console.log(genParams.input);
+    // console.log('\n\n***** TEXT INPUT INTO MODEL *****');
+    // console.log(genParams.input);
     console.log('\n\n***** TEXT RESPONSE FROM MODEL *****');
     const inputString = textGenerationResult.result.results[0].generated_text;
     console.log(inputString)
@@ -50,7 +52,7 @@ async function askWinstonSuggestion(prompt) {
     const genParams = {
         input: prompt,
         modelId: 'ibm/granite-3-8b-instruct',
-        projectId: "5dcfc15a-c8b6-46ad-b359-219981131560",
+        projectId: projectID,
         parameters: textGenRequestParametersModel,
     };
     const textGenerationResult = await watsonxAIService.generateText(genParams);

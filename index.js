@@ -1,11 +1,10 @@
+// all imports
 const express = require("express")
 const { config } = require('dotenv');
 config({ path: './project.env' });
 const path = require("path")
 const upload = require("./utils/multer.js")
-// const codeRunner = require("./utils/runner.js")
 const readPDF = require("./utils/test-extract.js")
-// require('./utils/watsonAI.js')
 const { prompt, prompt2 } = require("./utils/prompt.js");
 const {
     init,
@@ -16,9 +15,7 @@ const cors = require("cors")
 const cookieParser = require('cookie-parser');
 const textSpeech = require("./utils/TextSpeech.js")
 
-
-
-
+//server config
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -29,15 +26,16 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "./audio")));
 
+
+//routes
 app.get("/health", (req, res) => { //testing
-    // codeRunner();
 
     return res.json({
         "message": "Hello!"
     })
 })
 
-app.post("/resume", upload.single('resume'), async (req, res) => {
+app.post("/resume", upload.single('resume'), async (req, res) => { //resume upload handler
     try {
         const resumePath = path.join(__dirname, "resume-uploads", req.file?.filename)
         const extractedText = await readPDF(resumePath);
@@ -90,7 +88,7 @@ app.post("/resume", upload.single('resume'), async (req, res) => {
 
 })
 
-app.get("/suggest", async (req, res) => {
+app.get("/suggest", async (req, res) => { //resume suggestion handler
     try {
         let cookieData = req.cookies?.path;
         if (!cookieData) {
@@ -139,6 +137,7 @@ app.get("/suggest", async (req, res) => {
     }
 })
 
+//Listener
 app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
 })

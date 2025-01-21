@@ -8,6 +8,7 @@ async function getJobListings(params) {
             query: params.jobTitle,
             location: params.city,
             autoTranslateLocation: 'false',
+            acceptLanguage: 'en-GB',
             remoteOnly: 'false',
             employmentTypes: 'fulltime;parttime;intern;contractor'
         },
