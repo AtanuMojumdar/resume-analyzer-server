@@ -5,7 +5,7 @@ async function getJobListings(params) {
         method: 'GET',
         url: 'https://jobs-api14.p.rapidapi.com/v2/list',
         params: {
-            query: params.fresher ? params.jobTitle+" fresher": params.jobTitle,
+            query: params.jobTitle,
             location: params.city,
             autoTranslateLocation: 'false',
             acceptLanguage: 'en-GB',
