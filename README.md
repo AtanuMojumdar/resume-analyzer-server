@@ -11,5 +11,5 @@ This repository contains the server-side code for the AI-Powered Resume Analyzer
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/) v16 or higher
-- IBM Cloud account with necessary services (e.g., Watson AI)
+- [IBM Cloud](https://www.ibm.com/cloud/) account with necessary services (e.g., Watson AI)
 - External APIs for fetching job listings (configuration needed)
