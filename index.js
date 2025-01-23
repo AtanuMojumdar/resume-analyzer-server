@@ -96,7 +96,7 @@ app.get("/suggest", async (req, res) => { //resume suggestion handler
         let cookieData = req.cookies?.path;
         if (!cookieData) {
             return res.status(400).json({
-                "message": "error processing your resume, please re-upload"
+                "message": "Invalid Request, Please re-upload resume"
             })
         }
         cookieData = Buffer.from(cookieData, 'base64').toString('utf-8');
