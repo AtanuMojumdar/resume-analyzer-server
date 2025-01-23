@@ -141,7 +141,7 @@ app.get("/suggest", async (req, res) => { //resume suggestion handler
 })
 
 
-app.post("/custom-parameters",async(req,res)=>{
+app.post("/custom-parameters",async(req,res)=>{ //customize job search parameters
     try {
         console.log(req.body);
         const jobs = await getJobListings({
