@@ -17,9 +17,9 @@ const prompt = {
 }
 
 const prompt2 = {
-    header: "Suggest max 8 to 9 lines of comprehensive improvements to this resume targeted at a job role.Offer feedback to job seeker on how they can improve their resumes or skill sets to align better with market demands. Focus on: Optimizing it for ATS by suggesting specific keywords, Recommending quantifiable achievements to emphasize impact, Improving clarity, formatting, and conciseness. Please review the submission based on the criteria provided, but do not give a score generously. Focus on providing a fair, honest assessment of the work. Consider all aspects carefully, including functionality, creativity, and adherence to requirements.",
+    header: "Suggest max 8 to 9 lines of comprehensive personalized improvements to this resume targeted at a job role. Offer feedback to job seeker on how they can improve their resumes or skill sets to align better with market demands. Focus on: Optimizing it for ATS by suggesting specific keywords, Recommending quantifiable achievements to emphasize impact, Improving clarity, formatting, and conciseness. Please review the submission based on the criteria provided, but do not give a score generously. Focus on providing a fair, honest assessment of the work. Consider all aspects carefully, including functionality, creativity, and adherence to requirements.",
     header2: "But tell your reponse in the following JSON format: ",
-    example1: {score: "score the resume out of 10", suggestion: "first greet the user with the name in the resume (most probably the top line includes name, but if not infer or handle accordingly) and tell what things can be improved" },
+    example1: {score: "rate the resume between 1 to 10, (Integer Value)", suggestion: "first greet the user with the name in the resume (most probably the top line includes name, but if not infer or handle accordingly) and tell what things can be improved" },
 }
 
 module.exports= {
