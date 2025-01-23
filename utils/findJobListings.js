@@ -1,5 +1,13 @@
 const axios = require('axios');
 async function getJobListings(params) {
+    console.log({
+        query: params.jobTitle,
+        location: params.city,
+        autoTranslateLocation: 'false',
+        acceptLanguage: 'en-GB',
+        remoteOnly: params.remote ? params.remote+'' : 'false',
+        employmentTypes: params.internship ? 'intern;parttime' :'fulltime;parttime;intern;contractor'
+    })
 
     const options = {
         method: 'GET',
@@ -9,8 +17,8 @@ async function getJobListings(params) {
             location: params.city,
             autoTranslateLocation: 'false',
             acceptLanguage: 'en-GB',
-            remoteOnly: 'false',
-            employmentTypes: 'fulltime;parttime;intern;contractor'
+            remoteOnly: params.remote ? params.remote+'' : 'false',
+            employmentTypes: params.internship ? 'intern;parttime' :'fulltime;parttime;intern;contractor'
         },
         headers: {
             'x-rapidapi-key': process.env.RAPID_API_KEY,

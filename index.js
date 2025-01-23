@@ -24,6 +24,7 @@ app.use(cors({
     origin: "http://localhost:3000"
 }))
 app.use(cookieParser())
+app.use(express.json())
 app.use(express.static(path.join(__dirname, "./audio")));
 
 
@@ -77,7 +78,8 @@ app.post("/resume", upload.single('resume'), async (req, res) => { //resume uplo
 
         return res.json({
             "message": "uploaded",
-            "jobs": JSON.stringify(jobs)
+            "jobs": JSON.stringify(jobs),
+            "details": JSON.stringify(extractedJson)
         })
     }
     catch (err) {
@@ -134,6 +136,35 @@ app.get("/suggest", async (req, res) => { //resume suggestion handler
         console.log(err);
         return res.status(400).json({
             "message": "error processing your resume, please re-upload"
+        })
+    }
+})
+
+
+app.post("/custom-parameters",async(req,res)=>{
+    try {
+        console.log(req.body);
+        const jobs = await getJobListings({
+            city: req.body.location,
+            jobTitle: req.body.jobTitle,
+            remote: req.body.remote,
+            internship: req.body.internship
+        })
+
+        if (!jobs) {
+            return res.status(400).json({
+                "message": "sorry no jobs found! try again"
+            })
+        }
+        return res.json({
+            "message": "found jobs",
+            "jobs": JSON.stringify(jobs),
+        })
+        
+    } catch (error) {
+        console.log(err);
+        return res.status(400).json({
+            "message": "error extracting jobs"
         })
     }
 })
