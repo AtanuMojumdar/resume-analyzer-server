@@ -14,6 +14,8 @@ const getJobListings = require("./utils/findJobListings.js")
 const cors = require("cors")
 const cookieParser = require('cookie-parser');
 const textSpeech = require("./utils/TextSpeech.js")
+const {insertData,getData} = require("./db/DbOps.js")
+const extractTimestamp = require("./utils/extractTimestamp.js")
 
 //server config
 const app = express();
@@ -58,6 +60,20 @@ app.post("/resume", upload.single('resume'), async (req, res) => { //resume uplo
                 "message": "error while analyzing resume!"
             })
         }
+        //DB (log store) AI response
+        const fileNameWithoutExtension = path.basename(resumePath, path.extname(resumePath));
+        const _id = extractTimestamp(fileNameWithoutExtension);
+        const getDocRes = await getData(_id);
+        console.log("DB res", getDocRes)
+        if(!getDocRes){
+            const responseDB = await insertData({
+                id: _id,
+                data: extractedJson
+            })
+            if(!responseDB) console.log("DB Error!");
+        }
+
+
         // console.log(extractedJson);
         const jobs = await getJobListings({
             city: extractedJson.city,
@@ -124,6 +140,19 @@ app.get("/suggest", async (req, res) => { //resume suggestion handler
         const audioPath = path.join(__dirname,"audio",fileNameWithoutExtension+".wav")
         await textSpeech(extractedJson.suggestion,audioPath);
 
+        //DB (log store) AI response
+        const _id = extractTimestamp(fileNameWithoutExtension);
+        const getDocRes = await getData("suggestion:"+_id);
+        console.log("DB res", getDocRes)
+        if(!getDocRes){
+            const responseDB = await insertData({
+                id: "suggestion:"+_id,
+                data: extractedJson
+            })
+            if(!responseDB) console.log("DB Error!");
+        }
+
+
         res.clearCookie("path",{httpOnly:true})
 
         return res.json({
@@ -148,7 +177,7 @@ app.post("/custom-parameters",async(req,res)=>{ //customize job search parameter
         const jobs = await getJobListings({
             city: req.body.location,
             jobTitle: req.body.jobTitle,
-            remote: req.body.remote,
+            remote: req.body.remoteOnly,
             internship: req.body.internship
         })
 
