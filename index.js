@@ -124,6 +124,7 @@ app.get("/suggest", async (req, res) => { //resume suggestion handler
         const audioPath = path.join(__dirname,"audio",fileNameWithoutExtension+".wav")
         await textSpeech(extractedJson.suggestion,audioPath);
 
+        res.clearCookie("path",{httpOnly:true})
 
         return res.json({
             message: "ok",

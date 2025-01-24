@@ -12,6 +12,7 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
+    "@ibm-cloud/cloudant": "^0.12.0",
     "@ibm-cloud/watsonx-ai": "^1.3.1",
     "axios": "^1.7.9",
     "cookie-parser": "^1.4.7",
